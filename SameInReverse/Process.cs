@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace SameInReverse
@@ -49,16 +50,49 @@ namespace SameInReverse
         /// <param name="source">The source.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">source</exception>
-        public string GetSameReverseMessage(string source)
+        public string GetSameInReverseTextInString(string source)
         {
-            OriginalArray = source.ToCharArray();
+
 
             source = source.ToUpper();
             if (string.IsNullOrWhiteSpace(source))
             {
                 throw new ArgumentNullException(nameof(source));
             }
-            ArrayList = source.ToCharArray();
+            return GetResultMessage(source);
+        }
+        /// <summary>
+        /// Gets the same reverse message from folder.
+        /// </summary>
+        /// <param name="sourcePath">The source path.</param>
+        /// <returns></returns>
+        public string GetSameInReverseTextInFile(string sourcePath)
+        {
+
+            var path = Path.GetFullPath(sourcePath);
+            if (!File.Exists(path))
+            {
+                throw new FileNotFoundException(nameof(sourcePath));
+            }
+            if (!path.EndsWith(".sdx"))
+            {
+                throw new WrongFileFormatException(nameof(path));
+            }
+            var context = File.ReadAllText(path);
+
+            return GetResultMessage(context);
+        }
+
+        string GetResultMessage(string context)
+        {
+
+            if (string.IsNullOrWhiteSpace(context))
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+            OriginalArray = context.ToCharArray();
+            context = context.ToUpper();
+            ArrayList = context.ToCharArray();
 
 
             Func(1);
@@ -75,11 +109,6 @@ namespace SameInReverse
             return resultMessage;
         }
 
-        /// <summary>
-        /// Functions the specified index.
-        /// </summary>
-        /// <param name="index">The index.</param>
-        /// <returns></returns>
         List<Index> Func(int index)
         {
             var index1 = index;

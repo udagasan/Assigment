@@ -19,7 +19,7 @@ namespace SameInReverse.Test
             var testString = "abckelekdef";
 
             //When
-            var result = new SameInReverse.Process().GetSameReverseMessage(testString);
+            var result = new SameInReverse.Process().GetSameInReverseTextInString(testString);
 
             //Then
             Assert.AreEqual(result, "kelek");
@@ -35,7 +35,7 @@ namespace SameInReverse.Test
             var testString = "DevilNecerEveNLIVED";
 
             //When
-            var result = new SameInReverse.Process().GetSameReverseMessage(testString);
+            var result = new SameInReverse.Process().GetSameInReverseTextInString(testString);
 
             //Then
             Assert.AreEqual(result, "devilneverevenlived");
@@ -50,7 +50,7 @@ namespace SameInReverse.Test
             var testString = "abcthydef";
 
             //When
-            var result = new SameInReverse.Process().GetSameReverseMessage(testString);
+            var result = new SameInReverse.Process().GetSameInReverseTextInString(testString);
 
             //Then
             Assert.AreEqual(result, string.Empty);
@@ -65,7 +65,7 @@ namespace SameInReverse.Test
             var testString = "ababckelekdefcthyasdasddevilneverevenlivedasdasdasdasasddef";
 
             //When
-            var result = new SameInReverse.Process().GetSameReverseMessage(testString);
+            var result = new SameInReverse.Process().GetSameInReverseTextInString(testString);
 
             //Then
             Assert.AreEqual(result, "devilneverevenlived");
