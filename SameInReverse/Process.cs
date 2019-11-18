@@ -4,21 +4,51 @@ using System.Linq;
 
 namespace SameInReverse
 {
+    /// <summary>
+    /// Process
+    /// </summary>
     public class Process
     {
         #region Properties
+        /// <summary>
+        /// Gets or sets the array list.
+        /// </summary>
+        /// <value>
+        /// The array list.
+        /// </value>
         public char[] ArrayList { get; set; }
+        /// <summary>
+        /// Gets or sets the original array.
+        /// </summary>
+        /// <value>
+        /// The original array.
+        /// </value>
         public char[] OriginalArray { get; set; }
+        /// <summary>
+        /// Gets or sets the same in reverse list.
+        /// </summary>
+        /// <value>
+        /// The same in reverse list.
+        /// </value>
         public List<Index> SameInReverseList { get; set; }
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Process"/> class.
+        /// </summary>
         public Process()
         {
             SameInReverseList = new List<Index>();
         }
         #endregion
         #region Methods
+        /// <summary>
+        /// Gets the same reverse message.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">source</exception>
         public string GetSameReverseMessage(string source)
         {
             OriginalArray = source.ToCharArray();
@@ -45,6 +75,11 @@ namespace SameInReverse
             return resultMessage;
         }
 
+        /// <summary>
+        /// Functions the specified index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
         List<Index> Func(int index)
         {
             var index1 = index;
@@ -77,10 +112,31 @@ namespace SameInReverse
             #endregion
         }
     }
+    /// <summary>
+    /// Index
+    /// </summary>
     public sealed class Index
     {
+        /// <summary>
+        /// Gets or sets the start index.
+        /// </summary>
+        /// <value>
+        /// The start index.
+        /// </value>
         public int StartIndex { get; set; }
+        /// <summary>
+        /// Gets or sets the index of the finish.
+        /// </summary>
+        /// <value>
+        /// The index of the finish.
+        /// </value>
         public int FinishIndex { get; set; }
+        /// <summary>
+        /// Gets or sets the character count.
+        /// </summary>
+        /// <value>
+        /// The character count.
+        /// </value>
         public int CharCount { get; set; }
     }
 }
